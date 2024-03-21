@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { json } from 'express';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getHello(): any {
+    return { texte: 'Bonjour tous le monde' };
   }
 
-
-  getSalut():string {
-    return "Bonjour toi"
+  getSalut(): any {
+    return { texte: 'Bonjour toi' };
   }
 }
