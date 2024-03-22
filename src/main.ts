@@ -6,6 +6,7 @@ import config from './config/configuration.constant';
 console.log(
   `Launching NestJS app on port ${config().server.port}, URL: http://${config().server.host}:${config().server.port}`,
 );
+console.log(`Mongoose URI ${config().mongo.MAIN_DATABASE_URI}`);
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(cors());
