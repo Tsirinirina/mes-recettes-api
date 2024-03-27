@@ -13,6 +13,8 @@ export class AppController {
     await this.appService.generateInitialRole();
     console.log('Creation de la Super Utilisateur...');
     await this.appService.generateSuperUser();
+    console.log('Creation des catégorie initial...');
+    await this.appService.generateInitialCategory();
     const data = { message: 'Migration de la base de données avec succès!' };
     return res.json(data);
   }
