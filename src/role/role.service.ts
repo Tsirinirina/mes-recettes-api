@@ -19,19 +19,19 @@ export class RoleService {
     return this.roleModel.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.roleModel.findById(id);
   }
 
-  findByName(name: String) {
+  findByName(name: string) {
     return this.roleModel.findOne({ name });
   }
 
-  update(id: number, updateRoleDto: UpdateRoleDto) {
+  update(id: string, updateRoleDto: UpdateRoleDto) {
     return this.roleModel.findByIdAndUpdate(id, updateRoleDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.roleModel.findByIdAndDelete(id);
   }
 }
