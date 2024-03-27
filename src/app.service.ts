@@ -52,60 +52,60 @@ export class AppService {
   async generateInitialCategory(): Promise<any> {
     const initialCategory = [
       {
-        nom: 'Entrée',
+        name: 'Entrée',
         description:
           "Plat léger servi avant le plat principal pour ouvrir l'appétit.",
       },
       {
-        nom: 'Plat principal',
+        name: 'Plat principal',
         description:
           "Plat principal d'un repas, souvent composé de viande, de poisson ou de légumes accompagnés de féculents.",
       },
       {
-        nom: 'Accompagnement',
+        name: 'Accompagnement',
         description:
           "Plat d'accompagnement souvent servi avec le plat principal pour compléter le repas.",
       },
       {
-        nom: 'Dessert',
+        name: 'Dessert',
         description:
           'Plat sucré servi à la fin du repas pour conclure le repas sur une note douce.',
       },
       {
-        nom: 'Collation',
+        name: 'Collation',
         description: 'Petit encas consommé entre les repas principaux.',
       },
       {
-        nom: 'Boisson',
+        name: 'Boisson',
         description: 'Boisson consommée pour accompagner le repas.',
       },
       {
-        nom: 'Apéritif',
+        name: 'Apéritif',
         description:
           "Boisson ou plat léger servi avant le repas principal pour ouvrir l'appétit et accompagner les conversations.",
       },
       {
-        nom: 'Soupes et potages',
+        name: 'Soupes et potages',
         description:
           'Préparations liquides souvent à base de légumes, de viandes ou de poissons, servies chaudes ou froides.',
       },
       {
-        nom: 'Salades',
+        name: 'Salades',
         description:
           'Plats froids à base de légumes, de fruits, de viandes, de poissons ou de céréales, souvent assaisonnés et agrémentés de divers ingrédients.',
       },
       {
-        nom: 'Pâtes et riz',
+        name: 'Pâtes et riz',
         description:
           "Plats à base de pâtes, de riz ou de céréales, souvent accompagnés de sauces ou d'ingrédients variés.",
       },
       {
-        nom: 'Cuisine du monde',
+        name: 'Cuisine du monde',
         description:
           "Recettes provenant de différentes cultures et régions du monde, offrant une variété de saveurs et d'ingrédients uniques.",
       },
       {
-        nom: 'Végétarien',
+        name: 'Végétarien',
         description:
           'Recettes excluant la viande et le poisson, mettant en valeur les légumes, les fruits, les céréales et les légumineuses.',
       },
