@@ -11,11 +11,13 @@ import config from './config/configuration.constant';
 import { Comment } from './comment/entities/comment.entity';
 import { UserService } from './user/user.service';
 import { RoleService } from './role/role.service';
+import { CategoryService } from './category/category.service';
 @Injectable()
 export class AppService {
   constructor(
     private readonly roleService: RoleService,
     private readonly userService: UserService,
+    private readonly categoryService: CategoryService,
   ) {}
 
   async generateInitialRole(): Promise<any> {
@@ -35,9 +37,7 @@ export class AppService {
 
   async generateSuperUser(): Promise<any> {
     const su_role = await this.roleService.findByName(RoleType.SUPER_ADMIN);
-    console.log('Super User id: ', su_role._id);
-
-    const super_user = {
+    const superUser = {
       username: config().superAdmin.username,
       email: config().superAdmin.email,
       phone: config().superAdmin.phone,
@@ -46,6 +46,70 @@ export class AppService {
       failedConnectionCount: 0,
       isActive: true,
     };
-    return await this.userService.create(super_user);
+    return await this.userService.create(superUser);
+  }
+
+  async generateInitialCategory(): Promise<any> {
+    const initialCategory = [
+      {
+        nom: 'Entrée',
+        description:
+          "Plat léger servi avant le plat principal pour ouvrir l'appétit.",
+      },
+      {
+        nom: 'Plat principal',
+        description:
+          "Plat principal d'un repas, souvent composé de viande, de poisson ou de légumes accompagnés de féculents.",
+      },
+      {
+        nom: 'Accompagnement',
+        description:
+          "Plat d'accompagnement souvent servi avec le plat principal pour compléter le repas.",
+      },
+      {
+        nom: 'Dessert',
+        description:
+          'Plat sucré servi à la fin du repas pour conclure le repas sur une note douce.',
+      },
+      {
+        nom: 'Collation',
+        description: 'Petit encas consommé entre les repas principaux.',
+      },
+      {
+        nom: 'Boisson',
+        description: 'Boisson consommée pour accompagner le repas.',
+      },
+      {
+        nom: 'Apéritif',
+        description:
+          "Boisson ou plat léger servi avant le repas principal pour ouvrir l'appétit et accompagner les conversations.",
+      },
+      {
+        nom: 'Soupes et potages',
+        description:
+          'Préparations liquides souvent à base de légumes, de viandes ou de poissons, servies chaudes ou froides.',
+      },
+      {
+        nom: 'Salades',
+        description:
+          'Plats froids à base de légumes, de fruits, de viandes, de poissons ou de céréales, souvent assaisonnés et agrémentés de divers ingrédients.',
+      },
+      {
+        nom: 'Pâtes et riz',
+        description:
+          "Plats à base de pâtes, de riz ou de céréales, souvent accompagnés de sauces ou d'ingrédients variés.",
+      },
+      {
+        nom: 'Cuisine du monde',
+        description:
+          "Recettes provenant de différentes cultures et régions du monde, offrant une variété de saveurs et d'ingrédients uniques.",
+      },
+      {
+        nom: 'Végétarien',
+        description:
+          'Recettes excluant la viande et le poisson, mettant en valeur les légumes, les fruits, les céréales et les légumineuses.',
+      },
+    ];
+    return await this.categoryService.create(initialCategory);
   }
 }
