@@ -4,60 +4,6 @@ import * as mongoose from 'mongoose';
 import { HydratedDocument, Types } from 'mongoose';
 
 /**
- * Enumeration of Tables
- */
-export enum Table {
-  USERS = 'USERS',
-  ROLES = 'ROLES',
-}
-export enum GENDER {
-  MALE = 'MALE',
-  FEMALE = 'FEMALE',
-}
-
-/**
- * Represents a filter
- */
-export interface Filter {
-  // Represents variable fields that can be string / number / Date / string [] / boolean
-  [key: string]: string | number | Date | Array<string | boolean>;
-}
-
-/**
- * Represents an user filter
- */
-@Schema()
-export class UserFilter {
-  /**
-   * Id  of user filter
-   */
-  _id?: string;
-
-  /**
-   * Name  of user filter
-   */
-  @Prop({ type: String, required: true })
-  name: string;
-
-  /**
-   * Table name
-   */
-  @Prop({ type: String, enum: Object.values(Table), required: true })
-  table: Table;
-
-  /**
-   * Stored filter
-   */
-  @Prop({ type: mongoose.Schema.Types.Mixed, required: true })
-  filter: Filter;
-}
-
-/**
- * Instance of user filter schema
- */
-const userFilterSchema = SchemaFactory.createForClass(UserFilter);
-
-/**
  * Represents a User
  */
 @Schema({ timestamps: true })
@@ -68,28 +14,10 @@ export class User {
   _id?: string | Types.ObjectId;
 
   /**
-   * User first name
-   */
-  @Prop({ type: String, trim: true, required: true })
-  firstname: string;
-
-  /**
    * Username used for login
    */
   @Prop({ type: String, trim: true })
   username: string; // ça peut être le matricule
-
-  /**
-   * User last name
-   */
-  @Prop({ type: String, trim: true, required: true })
-  lastname: string;
-
-  /**
-   * User last name
-   */
-  @Prop({ type: String, trim: true, required: true })
-  address: string;
 
   /**
    * User email
@@ -100,8 +28,8 @@ export class User {
   /**
    * User phone number
    */
-  @Prop({ type: [String], required: true })
-  phone: string[];
+  @Prop({ type: String, required: true })
+  phone: string;
 
   /**
    * Encrypted password
@@ -110,41 +38,10 @@ export class User {
   password?: string;
 
   /**
-   * Gender name
-   */
-  @Prop({ type: String, enum: Object.values(GENDER), required: true })
-  gender: GENDER;
-
-  /**
-   * User phone number
-   */
-  @Prop({ type: String, required: false })
-  photo: string;
-
-  /**
    * User role
    */
-  @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Group' })
-  groups: string[];
-
-  /**
-   * User role
-   */
-  @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Role' })
-  roles: string[];
-
-  /**
-   * User creation Date
-   */
-
-  @Prop({ type: Date, required: true })
-  creationDate: Date;
-
-  /**
-   * User filters
-   */
-  @Prop({ type: [userFilterSchema] })
-  filters: UserFilter[];
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Role' })
+  role: string;
 
   /**
    * Failed connection count

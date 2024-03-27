@@ -1,4 +1,4 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 
 export enum IngredientType {
@@ -32,6 +32,7 @@ export enum UNITY {
   GALLON = 'Gallon',
 }
 
+@Schema()
 export class Ingredient {
   _id?: string;
 
@@ -45,5 +46,15 @@ export class Ingredient {
   quantity: Number;
 
   @Prop({ type: String, enum: Object.values(UNITY), required: true })
-  unity: Number;
+  unity: String;
 }
+
+/**
+ * Instance of Role Mongoose Schema
+ */
+export const ingredientSchema = SchemaFactory.createForClass(Ingredient);
+
+/**
+ * Represents Role Mongoose Document
+ */
+export type ingredientDocument = mongoose.HydratedDocument<Ingredient>;

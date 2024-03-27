@@ -1,4 +1,4 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 
 @Schema()
@@ -11,3 +11,13 @@ export class Category {
   @Prop({ type: String, required: false })
   description?: string;
 }
+
+/**
+ * Instance of Role Mongoose Schema
+ */
+export const categorySchema = SchemaFactory.createForClass(Category);
+
+/**
+ * Represents Role Mongoose Document
+ */
+export type categoryDocument = mongoose.HydratedDocument<Category>;

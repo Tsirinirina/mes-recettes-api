@@ -1,4 +1,4 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 export enum DIFFICULTY {
   EASY = 'EASY',
@@ -37,3 +37,13 @@ export class Recipe {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   author: string;
 }
+
+/**
+ * Instance of Role Mongoose Schema
+ */
+export const recipeSchema = SchemaFactory.createForClass(Recipe);
+
+/**
+ * Represents Role Mongoose Document
+ */
+export type recipeDocument = mongoose.HydratedDocument<Recipe>;
