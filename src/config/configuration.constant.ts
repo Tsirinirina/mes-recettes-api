@@ -30,6 +30,13 @@ const conf = {
     smtpHost: env.get('SMTP_HOST').required().asString(),
     smtpPort: env.get('SMTP_PORT').required().asString(),
   },
+  superAdmin: {
+    username: env.get('SU_LOGIN').required().asString(),
+    phone: env.get('SU_PHONE').required().asString(),
+    email: env.get('SU_EMAIL').required().asString(),
+    login: env.get('SU_LOGIN').required().asString(),
+    password: env.get('SU_PASSWORD').required().asString(),
+  },
   jwt: {
     secretKey: env.get('JWT_SECRET_KEY').required().asString(),
     expiration: env.get('JWT_EXPIRATION').required().asIntPositive(),
