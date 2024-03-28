@@ -20,7 +20,7 @@ export class Recipe {
   description: string;
 
   @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Ingredient' })
-  ingredients: string;
+  ingredients: string[];
 
   @Prop({ type: String, required: true })
   instruction: string;
@@ -31,8 +31,8 @@ export class Recipe {
   @Prop({ type: String, required: true })
   Difficulty: string;
 
-  @Prop({ type: String, enum: Object.values(DIFFICULTY), required: true })
-  image: string;
+  // @Prop({ type: String, enum: Object.values(DIFFICULTY), required: true })
+  // image: string;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   author: string;
